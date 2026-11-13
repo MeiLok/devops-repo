@@ -97,7 +97,7 @@ SCOPE=$(az group show \
   --output tsv)
 
 #??
-if [ -z "$(az role assignment list --scope "$SCOPE" --role Contributpr --query )"]
+if [ -z "$(az role assignment list --scope "$SCOPE" --role Contributpr --query [0].id --output tsv )" ]
   az role assignment create \
     --assignee-object-id "$PRINCIPAL_ID" \
     --assignee-principal-type ServicePrincipal \
