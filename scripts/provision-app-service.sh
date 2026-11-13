@@ -60,9 +60,9 @@ az identity create \
   --name "$IDENTITY_NAME" \
   --resource-group "$RESOURCE_GROUP" \
   --query clientId \
-  #--query name \ from liveclass
-  --output tsv 
-
+   --output tsv 
+ #--query name \ from liveclass
+ 
 CLIENT_ID=$(az identity show \
   --name "$IDENTITY_NAME" \
   --resource-group "$RESOURCE_GROUP" \
