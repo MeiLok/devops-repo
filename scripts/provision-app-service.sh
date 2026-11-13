@@ -21,13 +21,12 @@ az appservice plan create \
   --sku "$PLAN_SKU" \
   --query provisioningState \
   --output tsv
-
+ #--query defaultHostName \
 az webapp create \
   --name "$APP_NAME" \
   --resource-group "$RESOURCE_GROUP" \
   --plan "$PLAN_NAME" \
   --runtime "$RUNTIME" \
-  #--query defaultHostName \
   --query provisioningState \
   --output tsv
 
@@ -97,7 +96,7 @@ SCOPE=$(az group show \
   --output tsv)
 
 #??
-if [ -z "$(az role assignment list --scope "$SCOPE" --role Contributpr --query [0].id --output tsv )" ]
+if [ -z "$(az role assignment list --scope "$SCOPE" --role Contributpr --query [0].id --output tsv )" ] ; then
   az role assignment create \
     --assignee-object-id "$PRINCIPAL_ID" \
     --assignee-principal-type ServicePrincipal \
